@@ -9,7 +9,7 @@ var request = require('sync-request');
 var express = require('express');
 var ourImdbIds2 = "";
 var ourImdbIds3 = [];
-
+const Apify = require('apify');
 
 /*
  cd C:\Users\Mateus\Dropbox\Aplicativos\Heroku\stremiodublado
@@ -21,7 +21,14 @@ var ourImdbIds3 = [];
 
 process.env.STREMIO_LOGGING = true; // enable server logging for development purposes
 
+const { utils: { log } } = Apify;
 
+log.logJson = false;
+
+Apify.main(async () => {
+    log.debug('Reading INPUT.');
+  
+});
 
 var manifest = {
     "id": "org.stremio.helloworld",
