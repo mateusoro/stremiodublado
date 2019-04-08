@@ -7,7 +7,7 @@
     "express": "^4.16.4",
     "magnet-uri": "^5.1.7",
     "request": "^2.85.0",
-    "sqlite3": "^4.0.6",
+    "sqlite-sync": "^0.3.8",
     "stremio-addons": "^2.8.14",
     "sync-request": "^6.1.0",
     "tableify": "^1.1.0",
