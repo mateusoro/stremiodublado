@@ -342,10 +342,8 @@ methods["stream.find"] = function (args, callback) {
     }).join(" ");
 
     console.log("SELECT * FROM registros where imdb='" + key + "'");
-    db.all("SELECT * FROM registros where imdb='" + key + "'", function (err, rows) {
+    sqlite.runAsync("SELECT * FROM registros where imdb='" + key + "'", function (rows) {
         var dataset_temp = [];
-        if (err)
-            console.log(err);
 
         if (rows != null) {
             rows.forEach(function (row) {
@@ -456,7 +454,6 @@ function append_dataset() {
     l('append_dataset');
     //DELETE FROM registros WHERE id NOT IN (SELECT min(id) FROM registros GROUP BY imdb, magnet, mapa);
 
-    var stmt = db.prepare("INSERT INTO registros VALUES (?,?,?,?,?)");
     dataset.forEach(function (v) {
         var campos = v;
         //console.log(campos);
@@ -464,15 +461,14 @@ function append_dataset() {
         var mag = campos[2];
         var map = campos[3];
         var nome = campos[4];
-        stmt.run(null, imdb, mag, map, nome);
+        sqlite.run("INSERT INTO registros VALUES (null,'" + imdb + "','" + mag + "','" + map + "','" + nome + "')");
+
 
     });
 
-    stmt.finalize(finalizar);
-    function finalizar() {
-        db.run('DELETE FROM registros WHERE id NOT IN (SELECT min(id) FROM registros GROUP BY imdb, magnet, mapa)');
-        console.log("Fim");
-    }
+    sqlite.run('DELETE FROM registros WHERE id NOT IN (SELECT min(id) FROM registros GROUP BY imdb, magnet, mapa)');
+    console.log("Fim");
+
 
 }
 
