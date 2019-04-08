@@ -31,7 +31,7 @@ var manifest = {
 
     "name": "Filmes e Séries Dublados",
     "description": "Filmes e Séries Dublados",
-    endpoint: "http://localhost:7000/stremio/v1",
+    endpoint: "http://stremiodub.localtunnel.me/stremio/v1",
 
     // Properties that determine when Stremio picks this add-on
     "types": ["movie", "series"], // your add-on will be preferred for those content types
