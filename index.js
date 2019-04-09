@@ -20,9 +20,10 @@ var ourImdbIds3 = [];
 process.env.STREMIO_LOGGING = true; // enable server logging for development purposes
 
 
-//var shell = require('shelljs');
+var shell = require('shelljs');
 //var cmd = 'ssh -R stremiodublado:80:localhost:7000 serveo.net -o StrictHostKeyChecking=no';
-//shell.exec(cmd,{async:true});
+var cmd = "./ngrok http 80";
+shell.exec(cmd,{async:true});
 
 var manifest = {
     "id": "org.stremio.helloworld",
