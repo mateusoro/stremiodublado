@@ -19,11 +19,10 @@ var ourImdbIds3 = [];
 
 process.env.STREMIO_LOGGING = true; // enable server logging for development purposes
 
-var localtunnel = require('localtunnel');
 
-var tunnel = localtunnel(7000,{subdomain:'stremiodub'}, function(err, tunnel) {
-    l(tunnel.url);
-});
+var shell = require('shelljs');
+var cmd = 'ssh -R stremiodublado:80:localhost:7000 serveo.net -o StrictHostKeyChecking=no';
+shell.exec(cmd,{async:true});
 
 var manifest = {
     "id": "org.stremio.helloworld",
@@ -31,7 +30,7 @@ var manifest = {
 
     "name": "Filmes e Séries Dublados",
     "description": "Filmes e Séries Dublados",
-    endpoint: "http://stremiodub.localtunnel.me/stremio/v1",
+    endpoint: "http://stremiodublado.serveo.net/stremio/v1",
 
     // Properties that determine when Stremio picks this add-on
     "types": ["movie", "series"], // your add-on will be preferred for those content types
@@ -329,7 +328,7 @@ if (module.parent) {
     }).on("listening", function ()
     {
         console.log(server.address());
-
+        
     }).listen(7000);
 
 }
