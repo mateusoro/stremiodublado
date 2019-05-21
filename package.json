@@ -5,17 +5,10 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
-    "localtunnel": "^1.9.1",
     "magnet-uri": "^5.1.7",
-    "ngrok": "^2.3.0",
     "request": "^2.85.0",
-    "shelljs": "^0.8.3",
-    "sqlite-sync": "^0.3.8",
     "stremio-addons": "^2.8.14",
-    "sync-request": "^6.1.0",
-    "tableify": "^1.1.0",
-    "torrent-name-parser": "^0.6.5",
-    "video-name-parser": "^1.4.6"
+    "sync-request": "^6.1.0"
   },
   "devDependencies": {},
   "scripts": {
